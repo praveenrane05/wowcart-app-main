@@ -1,0 +1,7 @@
+
+  <app-header></app-header>
+  <app-product-category></app-product-category>
+  <app-carousel *ngIf="router.url == '/'"></app-carousel>
+  <app-featured-product *ngIf="router.url == '/'"></app-featured-product>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>

@@ -1,0 +1,70 @@
+
+<section class="login-wrap mt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center" *ngIf="!error">
+          <div class="col-md-6">
+              <div class="login-box">
+                  <h3>Login</h3>
+                  <div class="alert alert-danger" *ngIf="loginError">
+                     {{loginError}}
+                  </div>
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                        <label for="productName"><b>Name</b></label>
+                          <input type="text" formControlName="productName" class="form-control" placeholder="Name" required>
+                          <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="error">
+                            <div *ngIf="productName.errors">
+                                Name is required.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="brand"><b>Brand</b></label>
+                          <input type="text" formControlName="productBrand" class="form-control" placeholder="Product Brand" required>
+                          <div *ngIf="productBrand.invalid && (productBrand.dirty || productBrand.touched)" class="error">
+                            <div *ngIf="productBrand.errors">
+                                Brand is required.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="productDescription"><b>Description</b></label>
+                          <input type="text" formControlName="productDescription" class="form-control" placeholder="Description" required>
+                          <div *ngIf="productDescription.invalid && (productDescription.dirty || productDescription.touched)" class="error">
+                            <div *ngIf="productDescription.errors">
+                                Description is required.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="productPrice"><b>Price</b></label>
+                          <input type="text" formControlName="productPrice" class="form-control" placeholder="Price" required>
+                          <div *ngIf="productPrice.invalid && (productPrice.dirty || productPrice.touched)" class="error">
+                            <div *ngIf="productPrice.errors">
+                                ProductPrice is required.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="productQty"><b>Qty</b></label>
+                          <input type="text" formControlName="productQty" class="form-control" placeholder="Qty" required>
+                          <div *ngIf="productQty.invalid && (productQty.dirty || productQty.touched)" class="error">
+                            <div *ngIf="productQty.errors">
+                                Qty is required.
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-custom">Log In</button>
+                      </div>
+                  </form>
+              </div>         
+          </div>
+        </div>
+        <!-- <div class="service-error" *ngIf="error">
+          <h1>{{error.errorTitle}}</h1>
+          <h3>{{error.errorDesc}}</h3>
+       </div> -->
+    </div>
+  </section>
+  
