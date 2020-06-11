@@ -1,123 +1,28 @@
 <div class="container-fluid mt-3 mb-3">
     <div class="row">
-        <div class="col-sm-3">
-         <!--Accordion wrapper-->
-<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-
-  <!-- Accordion card -->
-  <div class="card">
-
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="headingOne1">
-      <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
-        aria-controls="collapseOne1">
-        <h5 class="mb-0">
-          Collapsible Group Item #1 <i class="fas fa-angle-down rotate-icon"></i>
-        </h5>
-      </a>
-    </div>
-
-    <!-- Card body -->
-    <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-      data-parent="#accordionEx">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </div>
-    </div>
-
-  </div>
-  <!-- Accordion card -->
-
-  <!-- Accordion card -->
-  <div class="card">
-
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="headingTwo2">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
-        aria-expanded="false" aria-controls="collapseTwo2">
-        <h5 class="mb-0">
-          Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>
-        </h5>
-      </a>
-    </div>
-
-    <!-- Card body -->
-    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-      data-parent="#accordionEx">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </div>
-    </div>
-
-  </div>
-  <!-- Accordion card -->
-
-  <!-- Accordion card -->
-  <div class="card">
-
-    <!-- Card header -->
-    <div class="card-header" role="tab" id="headingThree3">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
-        aria-expanded="false" aria-controls="collapseThree3">
-        <h5 class="mb-0">
-          Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>
-        </h5>
-      </a>
-    </div>
-
-    <!-- Card body -->
-    <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
-      data-parent="#accordionEx">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-        nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-        labore sustainable VHS.
-      </div>
-    </div>
-
-  </div>
-  <!-- Accordion card -->
-
-</div>
-<!-- Accordion wrapper -->
-          
+        <div class="col-sm-2"> 
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-10 card-deck">
             <div class="card">
                 <div class="card-header">Grocery</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-3 mt-3" *ngFor="let blog of products">
-                            <div class="blog-box">
+                        <div class="col-md-4 mt-3" *ngFor="let blog of products.products">
+                            <div class="card product-card" style="align-items: center;">
                                 <picture>
-                                    <source media="(min-width:650px)" srcset="../../../assets/images/ashirwadata.jpg">
-                                    <source media="(min-width:465px)" srcset="../../../assets/images/ashirwadata.jpg">
-                                    <img src="img_orange_flowers.jpg" alt="Flowers"
-                                        style="width:100%;max-width: 100px;">
+                                    
+                                    <img [src]="blog.product_image" alt="Flowers"
+                                        style="width:150px;height:150px;">
                                 </picture>
-                                <h5>{{blog.productName}}</h5>
-                                <p>{{blog.productDescription}}</p>
-                                <p>{{blog.productPrice}}</p>
-                                <p>{{blog.productQty}}</p>
-
-                                <a class="btn btn-primary text-white">Add To Cart</a>
-                            </div>
+                                <div class="card-body">
+                                  <p class="card-title">{{blog.product_title}}</p>
+                                  <p class="card-text"><span class="prd-selling">&#8377;{{blog.product_selling_price}}</span> <span class="prd-mrp"><del>&#8377;{{blog.product_mrp}}</del></span> <span class="prd-discount">{{blog.product_discount}}&#37;off</span></p>
+                                  <div class="cardBtn">
+                                    <button type="button" class="btn btn-light">{{blog.product_quantity}}</button>
+                                    <button type="button" class="btn btn-light">Add Item</button>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
 
                     </div>

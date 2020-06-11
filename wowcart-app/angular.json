@@ -33,7 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/externals/scripts/jquery.min.js",
+              "node_modules/jquery/dist/jquery.js",
               "src/externals/scripts/popper.min.js",
               "src/externals/scripts/bootstrap.min.js"
             ]

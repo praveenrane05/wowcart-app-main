@@ -1,7 +1,16 @@
 export class Products {
     productName: String;
-    productBrand: String;
+    productTitle: String;
+    productSubTitle: String;
+    productPrice: Number;
+    productDiscount: Number;
     productDescription: String;
-    productPrice: String;
-    productQty: Number;
+    productSpecs: String;
+    productCode: String;
+    productImage: String;
+    productCatId: String;
+    productCatName: String;
+    productSubCatId: String;
+    productSubCatName: String;
+    productType: String;
 }

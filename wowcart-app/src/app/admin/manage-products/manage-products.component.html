@@ -1,70 +1,206 @@
+<section class="mb-5">
+  <div class="container">
+    <button type="button" id="addproduct" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="onClick($event,{})">
+      Add Product
+    </button>
+    <div class="mt-2">    
+      <table class="table table-striped table-bordered table-hover table-dark table-responsive">
+        <thead>
+          <tr>
+            <th>Product Title</th>
+            <th>Product Brand</th>
+            <th>Product Model</th>
+            <th>Product Selling Price</th>
+            <th>Product Mrp</th>
+            <th>Product Discount</th>
+            <th>Product Qunatity</th>
+            <th>Product Primary Category Name</th>
+            <th>Product Secondry Category Name</th>
+            <th>Type</th>
 
-<section class="login-wrap mt-5 mb-5">
-    <div class="container">
-        <div class="row justify-content-center" *ngIf="!error">
-          <div class="col-md-6">
-              <div class="login-box">
-                  <h3>Login</h3>
-                  <div class="alert alert-danger" *ngIf="loginError">
-                     {{loginError}}
-                  </div>
-                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                      <div class="form-group">
-                        <label for="productName"><b>Name</b></label>
-                          <input type="text" formControlName="productName" class="form-control" placeholder="Name" required>
-                          <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="error">
-                            <div *ngIf="productName.errors">
-                                Name is required.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="brand"><b>Brand</b></label>
-                          <input type="text" formControlName="productBrand" class="form-control" placeholder="Product Brand" required>
-                          <div *ngIf="productBrand.invalid && (productBrand.dirty || productBrand.touched)" class="error">
-                            <div *ngIf="productBrand.errors">
-                                Brand is required.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="productDescription"><b>Description</b></label>
-                          <input type="text" formControlName="productDescription" class="form-control" placeholder="Description" required>
-                          <div *ngIf="productDescription.invalid && (productDescription.dirty || productDescription.touched)" class="error">
-                            <div *ngIf="productDescription.errors">
-                                Description is required.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="productPrice"><b>Price</b></label>
-                          <input type="text" formControlName="productPrice" class="form-control" placeholder="Price" required>
-                          <div *ngIf="productPrice.invalid && (productPrice.dirty || productPrice.touched)" class="error">
-                            <div *ngIf="productPrice.errors">
-                                ProductPrice is required.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="productQty"><b>Qty</b></label>
-                          <input type="text" formControlName="productQty" class="form-control" placeholder="Qty" required>
-                          <div *ngIf="productQty.invalid && (productQty.dirty || productQty.touched)" class="error">
-                            <div *ngIf="productQty.errors">
-                                Qty is required.
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-custom">Log In</button>
-                      </div>
-                  </form>
-              </div>         
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products.products">
+            <td>{{product.product_title}}</td>
+            <td>{{product.product_brand}}</td>
+            <td>{{product.product_model}}</td>
+            <td>{{product.product_selling_price}}</td>
+            <td>{{product.product_mrp}}</td>
+            <td>{{product.product_discount}}</td>
+            <td>{{product.product_quantity}}</td>
+            <td>{{product.product_cat_name}}</td>
+            <td>{{product.product_sub_cat_name}}</td>
+            <td>{{product.type}}</td>
+            <td><button type="button" id="editproduct" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="onClick($event, product)">
+              <i class='far fa-edit'></i>
+            </button></td>
+            <td><button type="button" id="deleteproduct" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onClick($event, product)">
+              <i class='fas fa-trash-alt'></i>
+            </button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"> {{formName}} Product</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div *ngIf="!error">
+
+              <div class="product-box">
+
+                <div class="alert alert-danger" *ngIf="productFormError">
+                  {{productFormError}}
+                </div>
+                <form class="example-form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Title</mat-label>
+                    <input matInput formControlName="product_title">
+                    <mat-error *ngIf="productTitle.invalid && (productTitle.dirty || productTitle.touched)">
+                      Product Title is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Brand</mat-label>
+                    <input matInput formControlName="product_brand">
+                    <mat-error *ngIf="productBrand.invalid && (productBrand.dirty || productBrand.touched)">
+                      Product Brand is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Model</mat-label>
+                    <input matInput formControlName="product_model">
+                    <mat-error *ngIf="productModel.invalid && (productModel.dirty || productModel.touched)">
+                      Product Model is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Selling Price</mat-label>
+                    <span matPrefix>&#8377; &nbsp;</span>
+                    <input matInput type="number" formControlName="product_selling_price">
+                    <mat-error *ngIf="productSellingPrice.invalid && (productSellingPrice.dirty || productSellingPrice.touched)">
+                      Product Selling price is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product MRP</mat-label>
+                    <span matPrefix>&#8377; &nbsp;</span>
+                    <input matInput type="number"  formControlName="product_mrp">
+                    <mat-error *ngIf="productMrp.invalid && (productMrp.dirty || productMrp.touched)">
+                      Product MRP is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Discount</mat-label>
+                    <span matPrefix>&#37; &nbsp;</span>
+                    <input matInput type="number" formControlName="product_discount">
+                    <mat-error *ngIf="productDiscount.invalid && (productDiscount.dirty || productDiscount.touched)">
+                      Product Discount is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Delivery Pin</mat-label>
+                    <input matInput type="number" formControlName="product_delivery">
+                    <mat-error *ngIf="productDelivery.invalid && (productDelivery.dirty || productDelivery.touched)">
+                      Product Title is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Qunatity</mat-label>
+                    <input matInput formControlName="product_quantity">
+                    <mat-error *ngIf="productQuantity.invalid && (productQuantity.dirty || productQuantity.touched)">
+                      productQuantity is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Services</mat-label>
+                    <input matInput formControlName="product_services">
+                    <mat-error *ngIf="productServices.invalid && (productServices.dirty || productServices.touched)">
+                      Product productServices is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Image</mat-label>
+                    <input matInput formControlName="product_image">
+                    <mat-error *ngIf="productImage.invalid && (productImage.dirty || productImage.touched)">
+                      Product Image is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Seller</mat-label>
+                    <input matInput formControlName="product_seller">
+                    <mat-error *ngIf="productSeller.invalid && (productSeller.dirty || productSeller.touched)">
+                      Product Seller is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Primary Category</mat-label>
+                    <input matInput formControlName="product_cat_name">
+                    <mat-error *ngIf="productCatName.invalid && (productCatName.dirty || productCatName.touched)">
+                      Product Primary Category is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label> Product Secondry Category</mat-label>
+                    <input matInput formControlName="product_sub_cat_name">
+                    <mat-error *ngIf="productSubCatName.invalid && (productSubCatName.dirty || productSubCatName.touched)">
+                      Product Secondry Category is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Product Type</mat-label>
+                    <input matInput formControlName="type">
+                    <mat-error *ngIf="productType.invalid && (productType.dirty || productType.touched)">
+                      Product Type is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <div class="form-group">
+                    <button type="submit" [disabled]="!productForm.valid"
+                      class="btn btn-primary btn-custom">Save</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
         </div>
-        <!-- <div class="service-error" *ngIf="error">
+      </div>
+    </div>
+
+    <!-- <div class="service-error" *ngIf="error">
           <h1>{{error.errorTitle}}</h1>
           <h3>{{error.errorDesc}}</h3>
        </div> -->
-    </div>
-  </section>
-  
+  </div>
+</section>

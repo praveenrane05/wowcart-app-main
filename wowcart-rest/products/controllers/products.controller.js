@@ -27,3 +27,17 @@ exports.getSubCategoryData = (req, res) => {
             res.status(200).send(result);
         });
 }
+
+exports.saveProductData = (req, res) => {
+    UserModel.saveProductData(req.body)
+        .then((result) => {
+            res.status(201).send({ msg: "Product added successfully" });
+        });
+}
+
+exports.getProductData = (req, res) => {
+    UserModel.getProductData(req.body)
+        .then((result) => {
+            res.status(200).send(result);
+        });
+}

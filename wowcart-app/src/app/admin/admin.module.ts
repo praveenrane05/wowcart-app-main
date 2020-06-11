@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { DatePipe } from '@angular/common'
+import * as $ from 'jquery';
+import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule  } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -15,7 +17,9 @@ import { ManagePagesComponent } from './manage-pages/manage-pages.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MaterialModule,
     AdminRoutingModule
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class AdminModule { }

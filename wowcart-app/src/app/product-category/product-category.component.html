@@ -1,16 +1,6 @@
 <ul>
-  <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
-  <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">WoW Cart Exclusive Offers</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Grocery Essentials</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Snacks & Beverages</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Packaged Foods</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Personal Care</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Health Care</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">House Care</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Bakery</a></li>
-    <li> <a routerLink="/products" routerLinkActive="active" class="nav-link">Vegatables & Fruits</a></li>
-  </ul>
+
+  <li *ngFor="let cat of catgory.categories"> <a routerLink="/products" routerLinkActive="active"
+      class="nav-link">{{cat.category_name}}</a></li>
+
+</ul>

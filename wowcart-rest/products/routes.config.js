@@ -25,5 +25,13 @@ exports.routesConfig = function (app) {
     app.get('/getSubCategoryData', [
         ProductsController.getSubCategoryData
     ]);
+
+    app.post('/saveProductData', [
+        ProductsController.saveProductData
+    ]);
+
+    app.get('/getProductData', [
+        ProductsController.getProductData
+    ]);
    
 };
